@@ -3,7 +3,7 @@ import actions from './actions';
 
 axios.defaults.baseURL = 'https://61ea82717bc0550017bc67cd.mockapi.io';
 
-const getContacts = () => dispatch => {
+const getALLContacts = () => dispatch => {
   dispatch(actions.getContactRequest());
   axios
     .get('/contacts')
@@ -27,6 +27,6 @@ const deleteContact = id => dispatch => {
     .then(() => dispatch(actions.deleteContactSuccess(id)))
     .catch(error => dispatch(actions.deleteContactError(error)));
 };
-const contactsOperations = { getContacts, addContact, deleteContact };
+const contactsOperations = { getALLContacts, addContact, deleteContact };
 
 export default contactsOperations;

@@ -1,5 +1,4 @@
 import { createAction } from '@reduxjs/toolkit';
-// import { v4 as uuidv4 } from 'uuid';
 import axios from 'axios';
 
 axios.defaults.baseURL = 'https://61ea82717bc0550017bc67cd.mockapi.io';

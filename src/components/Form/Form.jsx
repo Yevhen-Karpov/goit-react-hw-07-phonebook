@@ -1,35 +1,40 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
-import { connect, useSelector } from 'react-redux';
-// import contactsActions from '../../redux/actions';
+
+import { useSelector, useDispatch } from 'react-redux';
 import contactsOperations from '../../redux/operations';
-import { getContacts } from '../../redux/selector';
+import { getContacts } from '../../redux/selectors';
 import s from './Form.module.css';
 
-const Form = ({ onSubmit }) => {
+export default function Form() {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
   const contacts = useSelector(getContacts);
-  const handleNameChange = e => {
-    setName(e.currentTarget.value);
+  const dispatch = useDispatch();
+
+  const onSubmit = (name, number) =>
+    dispatch(contactsOperations.addContact(name, number));
+
+  const handleNameChange = ({ currentTarget: { value } }) => {
+    setName(value);
   };
 
-  const handleNumberChange = e => {
-    setNumber(e.currentTarget.value);
+  const handleNumberChange = ({ currentTarget: { value } }) => {
+    setNumber(value);
   };
 
   const handleAddContact = e => {
     e.preventDefault();
-    if (contacts.find(contact => contact.name === name)) {
+    const isRepeatContact = contacts.find(contact => contact.name === name);
+    if (isRepeatContact) {
       alert(`${name} is already in contacts.`);
-      reset();
+      resetState();
       return;
     }
     onSubmit(name, number);
-    reset();
+    resetState();
   };
 
-  const reset = () => {
+  const resetState = () => {
     setName('');
     setNumber('');
   };
@@ -71,14 +76,4 @@ const Form = ({ onSubmit }) => {
       </form>
     </div>
   );
-};
-
-const mapDispatchToProps = dispatch => ({
-  onSubmit: (name, number) =>
-    dispatch(contactsOperations.addContact(name, number)),
-});
-export default connect(null, mapDispatchToProps)(Form);
-
-Form.propTypes = {
-  onSubmit: PropTypes.func,
-};
+}
