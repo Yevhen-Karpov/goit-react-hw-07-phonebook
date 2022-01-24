@@ -8,9 +8,9 @@
 }
 
 .input {
-  padding: 4px 8px;
+  padding: 8px;
   display: block;
-
+  border-radius: 8px;
   margin-top: 20px;
   margin-bottom: 30px;
   width: 350px;

@@ -24,12 +24,15 @@ export default function Form() {
 
   const handleAddContact = e => {
     e.preventDefault();
+
     const isRepeatContact = contacts.find(contact => contact.name === name);
+    
     if (isRepeatContact) {
       alert(`${name} is already in contacts.`);
       resetState();
       return;
     }
+
     onSubmit(name, number);
     resetState();
   };
