@@ -1,7 +1,4 @@
 import { createAction } from '@reduxjs/toolkit';
-import axios from 'axios';
-
-axios.defaults.baseURL = 'https://61ea82717bc0550017bc67cd.mockapi.io';
 
 const getContactRequest = createAction('contacts/getContactRequest');
 const getContactSuccess = createAction('contacts/getContactSuccess');

@@ -8,7 +8,7 @@ import {
   REGISTER,
 } from 'redux-persist';
 import logger from 'redux-logger';
-import contactsReduser from './reducers';
+import contactsReducers from './reducers';
 
 const middleware = [
   ...getDefaultMiddleware({
@@ -21,7 +21,7 @@ const middleware = [
 
 const store = configureStore({
   reducer: {
-    users: contactsReduser,
+    users: contactsReducers,
   },
   middleware,
   devTools: process.env.NODE_ENV === 'development',

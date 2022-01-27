@@ -11,8 +11,10 @@ export default function Form() {
   const contacts = useSelector(getContacts);
   const dispatch = useDispatch();
 
-  const onSubmit = (name, number) =>
+  const onSubmit = (name, number) => {
+    console.log(name);
     dispatch(contactsOperations.addContact(name, number));
+  };
 
   const handleNameChange = ({ currentTarget: { value } }) => {
     setName(value);
@@ -26,14 +28,14 @@ export default function Form() {
     e.preventDefault();
 
     const isRepeatContact = contacts.find(contact => contact.name === name);
-    
+
     if (isRepeatContact) {
       alert(`${name} is already in contacts.`);
       resetState();
       return;
     }
 
-    onSubmit(name, number);
+    onSubmit({ name, number });
     resetState();
   };
 
