@@ -12,7 +12,6 @@ export default function Form() {
   const dispatch = useDispatch();
 
   const onSubmit = (name, number) => {
-    console.log(name);
     dispatch(contactsOperations.addContact(name, number));
   };
 

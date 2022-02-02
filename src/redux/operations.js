@@ -5,8 +5,7 @@ const getALLContacts = createAsyncThunk(
   'contacts/getALLContacts',
   async (_, { rejectWithValue }) => {
     try {
-      const contacts = await contactsApi.fetchContacts();
-      return contacts;
+      return await contactsApi.fetchContacts();
     } catch (error) {
       return rejectWithValue(error);
     }
@@ -17,8 +16,7 @@ const addContact = createAsyncThunk(
   'contacts/addContacts',
   async (payload, { rejectWithValue }) => {
     try {
-      const contacts = await contactsApi.fetchAddContact(payload);
-      return contacts;
+      return await contactsApi.fetchAddContact(payload);
     } catch (error) {
       return rejectWithValue(error);
     }
@@ -29,8 +27,7 @@ const deleteContact = createAsyncThunk(
   'contacts/deleteContact',
   async (id, { rejectWithValue }) => {
     try {
-      const contacts = await contactsApi.fetchDeleteContact(id);
-      return contacts;
+      return await contactsApi.fetchDeleteContact(id);
     } catch (error) {
       return rejectWithValue(error);
     }
